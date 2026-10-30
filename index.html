@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouni Sadhu's Watch Concentration Practice</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts for refined typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Cinzel', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            slate: {
+              850: '#151c2c',
+              900: '#0f172a',
+              950: '#070b13',
+            },
+            amber: {
+              450: '#f59e0b',
+              550: '#d97706',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom subtle pulsing & focal glow */
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 0.9; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+    .focal-glow {
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.35);
+    }
+    /* Custom scrollbar for analytics logs */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.6);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(217, 119, 6, 0.4);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(217, 119, 6, 0.7);
+    }
+    /* Modal Backdrop Transitions */
+    .modal-backdrop {
+      background: rgba(4, 7, 14, 0.85);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col selection:bg-amber-500/20 selection:text-amber-200 antialiased overflow-x-hidden">
+
+  <!-- Header / Navigation Bar -->
+  <header class="w-full border-b border-slate-800/80 bg-slate-900/60 backdrop-blur px-4 sm:px-8 py-3.5 flex items-center justify-between z-30 sticky top-0">
+    <div class="flex items-center space-x-3">
+      <div class="w-9 h-9 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+        <i data-lucide="compass" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <h1 class="text-base sm:text-lg font-serif tracking-wider text-slate-100 flex items-center gap-2">
+          Mouni Sadhu <span class="text-xs font-mono font-normal uppercase px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/25">Exercise No. 1</span>
+        </h1>
+        <p class="text-xs text-slate-400 hidden sm:block">Watch Concentration & Single-Point Steadiness</p>
+      </div>
+    </div>
+
+    <!-- Quick action toggles -->
+    <div class="flex items-center space-x-2 sm:space-x-3">
+      <!-- Mute/Sound Toggle -->
+      <button id="soundToggleBtn" title="Toggle Mechanical Tick" class="p-2 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700/60 text-slate-300 hover:text-amber-300 transition-colors">
+        <i id="soundIcon" data-lucide="volume-2" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Minimal Dial Mode (Zen Mode) -->
+      <button id="zenDialBtn" title="Toggle Minimal Dial (Pointer Only)" class="p-2 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700/60 text-slate-300 hover:text-amber-300 transition-colors flex items-center gap-1.5 text-xs">
+        <i data-lucide="eye" class="w-4 h-4 text-amber-400"></i>
+        <span class="hidden md:inline font-mono">Dial Elements</span>
+      </button>
+
+      <!-- History & Stats Modal Button -->
+      <button id="openStatsBtn" title="Session Analytics & Records" class="p-2 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700/60 text-slate-300 hover:text-amber-300 transition-colors">
+        <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Philosophical Guide Drawer Button -->
+      <button id="openGuideBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/15 border border-amber-500/40 text-amber-300 hover:bg-amber-500/25 transition-all text-xs font-medium">
+        <i data-lucide="book-open" class="w-4 h-4"></i>
+        <span>Guide & Rules</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col items-center justify-between gap-6">
+
+    <!-- Top Status Bar & Target Indicators -->
+    <div class="w-full flex flex-col md:flex-row items-center justify-between gap-4 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 sm:px-6">
+      <!-- Target Milestones Selector -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <span class="text-xs font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1">
+          <i data-lucide="target" class="w-3.5 h-3.5 text-amber-400"></i> Benchmark:
+        </span>
+        <div class="flex bg-slate-950 p-1 rounded-xl border border-slate-800">
+          <button data-target="60" class="target-btn active px-3 py-1 rounded-lg text-xs font-mono transition-all bg-amber-500/20 text-amber-300 font-semibold border border-amber-500/40">1m</button>
+          <button data-target="120" class="target-btn px-3 py-1 rounded-lg text-xs font-mono transition-all text-slate-400 hover:text-slate-200">2m</button>
+          <button data-target="300" class="target-btn px-3 py-1 rounded-lg text-xs font-mono transition-all text-slate-400 hover:text-slate-200">5m</button>
+          <button data-target="600" class="target-btn px-3 py-1 rounded-lg text-xs font-mono transition-all text-slate-400 hover:text-slate-200" title="The Classic Mastery Benchmark">10m ★</button>
+        </div>
+      </div>
+
+      <!-- Live Streak / Overall Session Stats -->
+      <div class="flex items-center gap-6 text-center">
+        <div>
+          <div class="text-[10px] uppercase tracking-wider font-mono text-slate-400">Unbroken Streak</div>
+          <div id="streakTimerDisplay" class="text-2xl sm:text-3xl font-mono font-bold text-amber-400 tracking-tight">00:00.0</div>
+        </div>
+        <div class="h-8 w-px bg-slate-800"></div>
+        <div>
+          <div class="text-[10px] uppercase tracking-wider font-mono text-slate-400">Session Best</div>
+          <div id="bestStreakDisplay" class="text-xl sm:text-2xl font-mono text-slate-200">00:00.0</div>
+        </div>
+        <div class="h-8 w-px bg-slate-800"></div>
+        <div>
+          <div class="text-[10px] uppercase tracking-wider font-mono text-slate-400">Total Practice</div>
+          <div id="totalSessionDisplay" class="text-xl sm:text-2xl font-mono text-slate-400">00:00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Centerpiece: The High Precision Analog Canvas & Focus Arena -->
+    <div class="relative w-full flex-1 flex flex-col items-center justify-center my-auto min-h-[380px] sm:min-h-[460px]">
+      
+      <!-- Subtle Circular Background Aura -->
+      <div class="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-amber-500/5 blur-3xl pointer-events-none -z-10"></div>
+
+      <!-- Analog Clock Container -->
+      <div class="relative flex items-center justify-center">
+        <!-- Canvas Element -->
+        <canvas id="clockCanvas" class="relative z-10 w-[310px] h-[310px] sm:w-[410px] sm:h-[410px] rounded-full drop-shadow-2xl"></canvas>
+
+        <!-- Centering / Breathing Overlay -->
+        <div id="prepOverlay" class="absolute inset-0 z-20 rounded-full flex flex-col items-center justify-center bg-slate-950/90 backdrop-blur-md transition-all duration-700 opacity-0 pointer-events-none border border-amber-500/30">
+          <span class="text-xs uppercase tracking-widest font-mono text-amber-400/80 mb-2">Steady Breath & Eye Focus</span>
+          <div id="prepCountdown" class="text-6xl font-serif text-amber-300 font-bold mb-2">10</div>
+          <p class="text-xs text-slate-400 max-w-[200px] text-center leading-relaxed">Relax eyelids. Keep gaze soft upon the central axis.</p>
+        </div>
+
+        <!-- Inactive / Paused Subtle Overlay -->
+        <div id="idleNotice" class="absolute inset-0 z-10 rounded-full flex flex-col items-center justify-center bg-slate-950/40 pointer-events-none transition-opacity duration-300">
+          <div class="text-center px-4">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-mono uppercase tracking-widest text-amber-300/80 bg-slate-900/80 border border-amber-500/20 mb-2">Ready</span>
+            <p class="text-[13px] text-slate-400 font-light">Press <strong class="text-amber-400 font-mono">Start</strong> or press <strong class="text-amber-400 font-mono">Space</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Guidance Prompt -->
+      <p id="practiceInstruction" class="mt-4 text-xs font-mono text-slate-400 tracking-wide text-center">
+        "Concentrate solely upon the extreme tip of the moving pointer."
+      </p>
+    </div>
+
+    <!-- Bottom Controls & Distraction Action Bar -->
+    <div class="w-full max-w-2xl flex flex-col items-center gap-3">
+      
+      <!-- Primary Core Buttons -->
+      <div class="w-full flex items-center gap-3 sm:gap-4">
+        
+        <!-- Thought Intrusion (Break Streak) Button -->
+        <button id="thoughtIntrusionBtn" disabled class="flex-1 py-4 sm:py-4 px-6 rounded-2xl bg-gradient-to-r from-rose-950/70 via-rose-900/60 to-rose-950/70 hover:from-rose-900/80 hover:to-rose-800/80 border border-rose-500/40 text-rose-200 font-medium shadow-lg hover:shadow-rose-950/50 transition-all flex items-center justify-center gap-3 disabled:opacity-40 disabled:cursor-not-allowed group">
+          <i data-lucide="zap-off" class="w-5 h-5 text-rose-400 group-hover:scale-110 transition-transform"></i>
+          <span class="tracking-wide text-sm sm:text-base font-semibold">Thought Intrusion! (Reset Streak)</span>
+          <kbd class="hidden sm:inline text-xs font-mono px-2 py-0.5 rounded bg-rose-950/80 border border-rose-700/50 text-rose-300">Space</kbd>
+        </button>
+
+        <!-- Start / Pause / Resume Button -->
+        <button id="mainToggleBtn" class="px-7 sm:px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-450 hover:to-amber-550 text-slate-950 font-semibold shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 transition-all flex items-center justify-center gap-2 shrink-0">
+          <i id="mainToggleIcon" data-lucide="play" class="w-5 h-5 fill-current"></i>
+          <span id="mainToggleText" class="tracking-wide text-sm sm:text-base">Start Focus</span>
+        </button>
+      </div>
+
+      <!-- Mode Options & Keyboard Tip -->
+      <div class="w-full flex flex-wrap items-center justify-between text-xs text-slate-500 px-2 gap-2">
+        <div class="flex items-center gap-3">
+          <!-- Hand Motion Type (Sweep vs Stepping Tick) -->
+          <label class="flex items-center gap-1.5 cursor-pointer hover:text-slate-300">
+            <input type="checkbox" id="sweepModeToggle" class="rounded bg-slate-900 border-slate-700 text-amber-500 focus:ring-0">
+            <span>Continuous Sweep Motion</span>
+          </label>
+          <span class="text-slate-700">|</span>
+          <label class="flex items-center gap-1.5 cursor-pointer hover:text-slate-300">
+            <input type="checkbox" id="prepCountdownToggle" checked class="rounded bg-slate-900 border-slate-700 text-amber-500 focus:ring-0">
+            <span>10s Centering Count</span>
+          </label>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span>Intrusion Shortcut: <span class="font-mono text-slate-400">Spacebar</span> or <span class="font-mono text-slate-400">Tap Clock</span></span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Thought Intrusion Modal / Categorization Drawer -->
+  <div id="thoughtModal" class="fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-md p-6 shadow-2xl relative">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center">
+            <i data-lucide="alert-circle" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="font-serif text-lg font-semibold text-slate-100">Intrusion Recorded</h3>
+            <p class="text-xs text-slate-400">Unbroken span was <span id="modalStreakTime" class="font-mono text-amber-400 font-bold">00:23.4</span></p>
+          </div>
+        </div>
+        <button id="closeThoughtModal" class="p-1 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-slate-300 mb-4">
+        As instructed by Mouni Sadhu, acknowledge the stray thought with calmness and total honesty, without frustration:
+      </p>
+
+      <!-- Quick Distraction Classification Pills -->
+      <div class="grid grid-cols-2 gap-2 mb-5">
+        <button data-reason="Visual Drift" class="reason-btn px-3 py-2 text-xs rounded-xl bg-slate-800/80 hover:bg-amber-500/10 hover:border-amber-500/40 border border-slate-700/60 text-slate-300 transition-colors text-left flex items-center gap-2">
+          <i data-lucide="eye-off" class="w-3.5 h-3.5 text-amber-400"></i> Visual Drift
+        </button>
+        <button data-reason="Inner Dialogue" class="reason-btn px-3 py-2 text-xs rounded-xl bg-slate-800/80 hover:bg-amber-500/10 hover:border-amber-500/40 border border-slate-700/60 text-slate-300 transition-colors text-left flex items-center gap-2">
+          <i data-lucide="message-square" class="w-3.5 h-3.5 text-amber-400"></i> Inner Monologue
+        </button>
+        <button data-reason="Body / Itch / Sensation" class="reason-btn px-3 py-2 text-xs rounded-xl bg-slate-800/80 hover:bg-amber-500/10 hover:border-amber-500/40 border border-slate-700/60 text-slate-300 transition-colors text-left flex items-center gap-2">
+          <i data-lucide="activity" class="w-3.5 h-3.5 text-amber-400"></i> Body Sensation
+        </button>
+        <button data-reason="Anticipation / Time-Checking" class="reason-btn px-3 py-2 text-xs rounded-xl bg-slate-800/80 hover:bg-amber-500/10 hover:border-amber-500/40 border border-slate-700/60 text-slate-300 transition-colors text-left flex items-center gap-2">
+          <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-400"></i> Time Anticipation
+        </button>
+        <button data-reason="Random Memory / Association" class="reason-btn px-3 py-2 text-xs rounded-xl bg-slate-800/80 hover:bg-amber-500/10 hover:border-amber-500/40 border border-slate-700/60 text-slate-300 transition-colors text-left col-span-2 flex items-center gap-2">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i> Memory or Wandering Chain of Thought
+        </button>
+      </div>
+
+      <div class="flex items-center justify-end gap-2">
+        <button id="resumeImmediateBtn" class="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-450 text-slate-950 font-semibold text-xs tracking-wide transition-colors">
+          Reset Streak & Continue Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Historical Analytics & Attempts Modal -->
+  <div id="statsModal" class="fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-xl max-h-[90vh] flex flex-col p-6 shadow-2xl relative">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center">
+            <i data-lucide="trending-up" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="font-serif text-lg font-semibold text-slate-100">Concentration History & Logs</h3>
+            <p class="text-xs text-slate-400">Progress toward the 10-minute unbroken threshold</p>
+          </div>
+        </div>
+        <button id="closeStatsModal" class="p-1 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Lifetime / Session Summary Cards -->
+      <div class="grid grid-cols-3 gap-3 my-4">
+        <div class="bg-slate-950/70 p-3 rounded-2xl border border-slate-800 text-center">
+          <div class="text-[11px] font-mono text-slate-400 uppercase">Personal Record</div>
+          <div id="allTimeBestDisplay" class="text-lg font-mono font-bold text-amber-400 mt-1">00:00.0</div>
+        </div>
+        <div class="bg-slate-950/70 p-3 rounded-2xl border border-slate-800 text-center">
+          <div class="text-[11px] font-mono text-slate-400 uppercase">Total Attempts</div>
+          <div id="totalAttemptsDisplay" class="text-lg font-mono font-bold text-slate-200 mt-1">0</div>
+        </div>
+        <div class="bg-slate-950/70 p-3 rounded-2xl border border-slate-800 text-center">
+          <div class="text-[11px] font-mono text-slate-400 uppercase">Avg Streak</div>
+          <div id="avgStreakDisplay" class="text-lg font-mono font-bold text-slate-300 mt-1">00:00.0</div>
+        </div>
+      </div>
+
+      <!-- Session Attempt Log List -->
+      <div class="flex-1 overflow-y-auto pr-1">
+        <h4 class="text-xs font-mono uppercase text-slate-400 mb-2 tracking-wider flex items-center justify-between">
+          <span>Recent Focus Streaks (Current Session)</span>
+          <span id="logCountLabel" class="text-[10px] text-amber-400/80">0 records</span>
+        </h4>
+        <div id="attemptsLogContainer" class="space-y-2">
+          <!-- Dynamically populated entries -->
+          <div class="text-center py-8 text-xs text-slate-500 font-mono">No attempts recorded yet. Begin your practice session to build your concentration record.</div>
+        </div>
+      </div>
+
+      <!-- Action Footer -->
+      <div class="pt-4 border-t border-slate-800 flex items-center justify-between mt-2">
+        <button id="clearDataBtn" class="text-xs text-rose-400 hover:text-rose-300 flex items-center gap-1 transition-colors">
+          <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Clear Saved History
+        </button>
+        <button id="closeStatsModalBtn" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition-colors">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Guided Context & Rules Drawer -->
+  <div id="guideDrawer" class="fixed inset-0 z-50 modal-backdrop flex justify-end opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-slate-900 border-l border-slate-800 w-full max-w-lg h-full p-6 sm:p-8 flex flex-col overflow-y-auto transform translate-x-full transition-transform duration-300 shadow-2xl" id="guideDrawerContent">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center">
+            <i data-lucide="scroll" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="font-serif text-lg font-bold text-slate-100">Exercise No. 1 Principles</h3>
+            <p class="text-xs font-mono text-amber-400/90">Mouni Sadhu: 'Concentration'</p>
+          </div>
+        </div>
+        <button id="closeGuideBtn" class="p-1 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Canonical Instructions Content -->
+      <div class="space-y-5 text-sm text-slate-300 leading-relaxed font-light">
+        <section class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
+          <h4 class="font-serif text-amber-300 font-semibold mb-1.5 flex items-center gap-2">
+            <i data-lucide="crosshair" class="w-4 h-4 text-amber-400"></i> The Core Object
+          </h4>
+          <p class="text-xs sm:text-sm text-slate-300">
+            Fix your visual and mental attention <em>solely upon the extreme tip of the moving pointer</em> (the luminous amber dot). Disregard the numbers, the casing, and even the concept of passing time. Nothing exists in the universe except that single luminous point in motion.
+          </p>
+        </section>
+
+        <section class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
+          <h4 class="font-serif text-amber-300 font-semibold mb-1.5 flex items-center gap-2">
+            <i data-lucide="shield-alert" class="w-4 h-4 text-rose-400"></i> The Inflexible Rule of Intrusions
+          </h4>
+          <p class="text-xs sm:text-sm text-slate-300">
+            The moment any extraneous thought enters your consciousness—such as <em>"I'm doing well"</em>, <em>"How much time is left?"</em>, or an unrelated memory—<strong>the streak is instantly broken</strong>. Be scrupulously honest with yourself: tap the <span class="text-rose-400 font-semibold">Thought Intrusion</span> button immediately.
+          </p>
+        </section>
+
+        <section class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
+          <h4 class="font-serif text-amber-300 font-semibold mb-1.5 flex items-center gap-2">
+            <i data-lucide="eye" class="w-4 h-4 text-sky-400"></i> Eye Strain & Posture
+          </h4>
+          <p class="text-xs sm:text-sm text-slate-300">
+            Do not tense the facial muscles or strain the retinas. Blink naturally when required; blinking does not constitute a distraction so long as mental continuity on the point is preserved. Keep breathing rhythmic and calm.
+          </p>
+        </section>
+
+        <section class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
+          <h4 class="font-serif text-amber-300 font-semibold mb-1.5 flex items-center gap-2">
+            <i data-lucide="award" class="w-4 h-4 text-amber-400"></i> The 10-Minute Benchmark
+          </h4>
+          <p class="text-xs sm:text-sm text-slate-300">
+            In esoteric mental training, achieving <strong>10 uninterrupted minutes</strong> of perfect, continuous attention without a single thought intrusion indicates complete mastery over sensory perception and prepares the mind for the higher stages of meditation.
+          </p>
+        </section>
+      </div>
+
+      <!-- Footer Note -->
+      <div class="mt-auto pt-6 text-center">
+        <p class="text-xs text-slate-500 italic font-serif">
+          "Persistent, daily regular effort is of more value than sporadic hours of exertion."
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 bg-slate-900 border border-amber-500/40 text-amber-300 px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none">
+    <i data-lucide="check-circle" class="w-4 h-4 text-amber-400"></i>
+    <span id="toastMessage" class="text-xs font-mono">Benchmark Achieved!</span>
+  </div>
+
+  <!-- Application Logic -->
+  <script>
+    /* Initialize Lucide Icons */
+    lucide.createIcons();
+
+    /* =====================================================================
+       Application State & Storage
+       ===================================================================== */
+    const STATE = {
+      isRunning: false,
+      isPrepCountdown: false,
+      prepRemaining: 10,
+      targetSeconds: 60,
+      currentStreakMs: 0,
+      bestStreakSessionMs: 0,
+      totalSessionMs: 0,
+      streakStartTime: null,
+      continuousSweep: false,
+      useCenteringCount: true,
+      soundEnabled: true,
+      minimalDialMode: false,
+      attempts: [],
+      allTimeRecordMs: 0
+    };
+
+    // Load persisted data
+    try {
+      const savedData = JSON.parse(localStorage.getItem('mouni_sadhu_watch_records') || '{}');
+      STATE.allTimeRecordMs = savedData.allTimeRecordMs || 0;
+      if (savedData.minimalDialMode !== undefined) STATE.minimalDialMode = savedData.minimalDialMode;
+      if (savedData.continuousSweep !== undefined) STATE.continuousSweep = savedData.continuousSweep;
+    } catch (e) {
+      console.warn('LocalStorage error:', e);
+    }
+
+    /* =====================================================================
+       Web Audio API: Procedural Mechanical Clock Tick Synthesizer
+       ===================================================================== */
+    class ClockAudioSynthesizer {
+      constructor() {
+        this.ctx = null;
+      }
+
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContext();
+        }
+        if (this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      playTick(isAccented = false) {
+        if (!STATE.soundEnabled) return;
+        try {
+          this.init();
+          const t = this.ctx.currentTime;
+
+          // Tiny burst of high-passed noise for metallic escapement tooth click
+          const bufferSize = this.ctx.sampleRate * 0.015; // 15ms
+          const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+          const data = buffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) {
+            data[i] = Math.random() * 2 - 1;
+          }
+
+          const noise = this.ctx.createBufferSource();
+          noise.buffer = buffer;
+
+          const filter = this.ctx.createBiquadFilter();
+          filter.type = 'bandpass';
+          filter.frequency.setValueAtTime(isAccented ? 2800 : 2100, t);
+          filter.Q.setValueAtTime(4.0, t);
+
+          const gain = this.ctx.createGain();
+          gain.gain.setValueAtTime(isAccented ? 0.14 : 0.08, t);
+          gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.015);
+
+          noise.connect(filter);
+          filter.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          noise.start(t);
+        } catch (e) {
+          // Audio could be restricted prior to user gesture
+        }
+      }
+
+      playIntrusionSound() {
+        if (!STATE.soundEnabled) return;
+        try {
+          this.init();
+          const t = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(140, t);
+          osc.frequency.exponentialRampToValueAtTime(70, t + 0.25);
+
+          gain.gain.setValueAtTime(0.2, t);
+          gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.25);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(t);
+          osc.stop(t + 0.25);
+        } catch (e) {}
+      }
+
+      playGongMilestone() {
+        if (!STATE.soundEnabled) return;
+        try {
+          this.init();
+          const t = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(528, t); // 528 Hz clarity tone
+
+          gain.gain.setValueAtTime(0.25, t);
+          gain.gain.exponentialRampToValueAtTime(0.0001, t + 1.8);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(t);
+          osc.stop(t + 1.8);
+        } catch (e) {}
+      }
+    }
+
+    const audioSynth = new ClockAudioSynthesizer();
+
+    /* =====================================================================
+       DOM Elements Cache
+       ===================================================================== */
+    const canvas = document.getElementById('clockCanvas');
+    const ctx = canvas.getContext('2d');
+    const mainToggleBtn = document.getElementById('mainToggleBtn');
+    const mainToggleText = document.getElementById('mainToggleText');
+    const mainToggleIcon = document.getElementById('mainToggleIcon');
+    const thoughtIntrusionBtn = document.getElementById('thoughtIntrusionBtn');
+    const streakTimerDisplay = document.getElementById('streakTimerDisplay');
+    const bestStreakDisplay = document.getElementById('bestStreakDisplay');
+    const totalSessionDisplay = document.getElementById('totalSessionDisplay');
+    const prepOverlay = document.getElementById('prepOverlay');
+    const prepCountdown = document.getElementById('prepCountdown');
+    const idleNotice = document.getElementById('idleNotice');
+    const soundToggleBtn = document.getElementById('soundToggleBtn');
+    const soundIcon = document.getElementById('soundIcon');
+    const zenDialBtn = document.getElementById('zenDialBtn');
+    const sweepModeToggle = document.getElementById('sweepModeToggle');
+    const prepCountdownToggle = document.getElementById('prepCountdownToggle');
+    const targetBtns = document.querySelectorAll('.target-btn');
+    const toastNotification = document.getElementById('toastNotification');
+    const toastMessage = document.getElementById('toastMessage');
+
+    // Modals & Drawers
+    const thoughtModal = document.getElementById('thoughtModal');
+    const modalStreakTime = document.getElementById('modalStreakTime');
+    const closeThoughtModal = document.getElementById('closeThoughtModal');
+    const resumeImmediateBtn = document.getElementById('resumeImmediateBtn');
+    const statsModal = document.getElementById('statsModal');
+    const openStatsBtn = document.getElementById('openStatsBtn');
+    const closeStatsModal = document.getElementById('closeStatsModal');
+    const closeStatsModalBtn = document.getElementById('closeStatsModalBtn');
+    const guideDrawer = document.getElementById('guideDrawer');
+    const guideDrawerContent = document.getElementById('guideDrawerContent');
+    const openGuideBtn = document.getElementById('openGuideBtn');
+    const closeGuideBtn = document.getElementById('closeGuideBtn');
+    const clearDataBtn = document.getElementById('clearDataBtn');
+    const attemptsLogContainer = document.getElementById('attemptsLogContainer');
+    const logCountLabel = document.getElementById('logCountLabel');
+    const allTimeBestDisplay = document.getElementById('allTimeBestDisplay');
+    const totalAttemptsDisplay = document.getElementById('totalAttemptsDisplay');
+    const avgStreakDisplay = document.getElementById('avgStreakDisplay');
+
+    /* Sync initial toggles */
+    sweepModeToggle.checked = STATE.continuousSweep;
+    updateZenModeUI();
+
+    /* =====================================================================
+       Canvas Setup & Responsive Scaling
+       ===================================================================== */
+    let canvasSize = 400;
+
+    function resizeCanvas() {
+      const containerWidth = Math.min(window.innerWidth - 32, 420);
+      const dpr = window.devicePixelRatio || 1;
+      canvasSize = Math.max(300, Math.min(containerWidth, 420));
+      
+      canvas.width = canvasSize * dpr;
+      canvas.height = canvasSize * dpr;
+      canvas.style.width = `${canvasSize}px`;
+      canvas.style.height = `${canvasSize}px`;
+
+      ctx.resetTransform();
+      ctx.scale(dpr, dpr);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    /* =====================================================================
+       Formatting Helpers
+       ===================================================================== */
+    function formatTime(ms, includeMs = true) {
+      const totalSec = Math.floor(ms / 1000);
+      const minutes = Math.floor(totalSec / 60);
+      const seconds = totalSec % 60;
+      const tenths = Math.floor((ms % 1000) / 100);
+
+      const mStr = String(minutes).padStart(2, '0');
+      const sStr = String(seconds).padStart(2, '0');
+
+      if (includeMs) {
+        return `${mStr}:${sStr}.${tenths}`;
+      }
+      return `${mStr}:${sStr}`;
+    }
+
+    function showToast(msg) {
+      toastMessage.textContent = msg;
+      toastNotification.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-20');
+      setTimeout(() => {
+        toastNotification.classList.add('opacity-0', 'pointer-events-none', 'translate-y-20');
+      }, 3500);
+    }
+
+    /* =====================================================================
+       High-Precision Analog Dial Rendering
+       ===================================================================== */
+    let lastTickSecond = -1;
+
+    function renderClock() {
+      const center = canvasSize / 2;
+      const radius = center - 16;
+      ctx.clearRect(0, 0, canvasSize, canvasSize);
+
+      // Outer Bezel / Rim with subtle metallic luxury styling
+      const rimGrad = ctx.createLinearGradient(0, 0, canvasSize, canvasSize);
+      rimGrad.addColorStop(0, '#334155');
+      rimGrad.addColorStop(0.5, '#0f172a');
+      rimGrad.addColorStop(1, '#1e293b');
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(center, center, radius + 8, 0, Math.PI * 2);
+      ctx.fillStyle = rimGrad;
+      ctx.fill();
+      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = '#475569';
+      ctx.stroke();
+
+      // Inner Dial Face
+      const faceGrad = ctx.createRadialGradient(center, center, 10, center, center, radius);
+      faceGrad.addColorStop(0, '#0f172a');
+      faceGrad.addColorStop(0.85, '#070b13');
+      faceGrad.addColorStop(1, '#020617');
+
+      ctx.beginPath();
+      ctx.arc(center, center, radius, 0, Math.PI * 2);
+      ctx.fillStyle = faceGrad;
+      ctx.fill();
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(217, 119, 6, 0.25)';
+      ctx.stroke();
+
+      // Dial Ticks & Markers (Dimmed or hidden if Minimal Mode is active)
+      if (!STATE.minimalDialMode) {
+        // Ticks
+        for (let i = 0; i < 60; i++) {
+          const angle = (i * 6 * Math.PI) / 180;
+          const isFive = i % 5 === 0;
+          const innerR = radius - (isFive ? 14 : 7);
+          const outerR = radius - 4;
+
+          const x1 = center + Math.sin(angle) * innerR;
+          const y1 = center - Math.cos(angle) * innerR;
+          const x2 = center + Math.sin(angle) * outerR;
+          const y2 = center - Math.cos(angle) * outerR;
+
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.strokeStyle = isFive ? 'rgba(245, 158, 11, 0.7)' : 'rgba(100, 116, 139, 0.4)';
+          ctx.lineWidth = isFive ? 2 : 1;
+          ctx.stroke();
+        }
+
+        // Numerals (12, 3, 6, 9)
+        ctx.fillStyle = 'rgba(203, 213, 225, 0.55)';
+        ctx.font = '600 12px "JetBrains Mono", monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        const numDist = radius - 26;
+        ctx.fillText('60', center, center - numDist);
+        ctx.fillText('15', center + numDist, center);
+        ctx.fillText('30', center, center + numDist);
+        ctx.fillText('45', center - numDist, center);
+
+        // Center stationary reference axis crosshairs
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.08)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(center, center - radius + 20);
+        ctx.lineTo(center, center + radius - 20);
+        ctx.moveTo(center - radius + 20, center);
+        ctx.lineTo(center + radius - 20, center);
+        ctx.stroke();
+      } else {
+        // Zen Minimal Mode: ultra subtle track ring only
+        ctx.beginPath();
+        ctx.arc(center, center, radius - 10, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(245, 158, 11, 0.08)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        // Single faint reference north tick
+        ctx.beginPath();
+        ctx.moveTo(center, center - radius + 8);
+        ctx.lineTo(center, center - radius + 18);
+        ctx.strokeStyle = 'rgba(245, 158, 11, 0.3)';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+
+      // Calculate Hand Angle
+      let handAngle = 0;
+      if (STATE.isRunning && STATE.streakStartTime) {
+        const elapsed = STATE.currentStreakMs;
+        if (STATE.continuousSweep) {
+          // Smooth continuous angle based on milliseconds
+          handAngle = ((elapsed % 60000) / 60000) * (Math.PI * 2);
+        } else {
+          // Discrete 1-second mechanical jump
+          const currentSec = Math.floor(elapsed / 1000);
+          handAngle = ((currentSec % 60) / 60) * (Math.PI * 2);
+
+          // Trigger mechanical tick sound on integer second shift
+          if (currentSec !== lastTickSecond) {
+            lastTickSecond = currentSec;
+            audioSynth.playTick(currentSec % 5 === 0);
+          }
+        }
+      } else {
+        // Stationary north or subtle idle position
+        handAngle = 0;
+      }
+
+      // Hand Dimensions
+      const handLength = radius - 16;
+      const tailLength = 22;
+
+      // Draw Second Hand Stem
+      const tipX = center + Math.sin(handAngle) * handLength;
+      const tipY = center - Math.cos(handAngle) * handLength;
+      const tailX = center - Math.sin(handAngle) * tailLength;
+      const tailY = center + Math.cos(handAngle) * tailLength;
+
+      ctx.beginPath();
+      ctx.moveTo(tailX, tailY);
+      ctx.lineTo(tipX, tipY);
+      ctx.strokeStyle = STATE.minimalDialMode ? 'rgba(217, 119, 6, 0.45)' : 'rgba(245, 158, 11, 0.85)';
+      ctx.lineWidth = 1.8;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+
+      // Center Pivot Pin & Cap
+      ctx.beginPath();
+      ctx.arc(center, center, 4.5, 0, Math.PI * 2);
+      ctx.fillStyle = '#f59e0b';
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(center, center, 2, 0, Math.PI * 2);
+      ctx.fillStyle = '#0f172a';
+      ctx.fill();
+
+      /* ==========================================================
+         THE CRITICAL PRACTICE FOCAL POINT: Luminous Tip of Hand
+         ========================================================== */
+      // Focal Point Glow
+      const glowGrad = ctx.createRadialGradient(tipX, tipY, 1, tipX, tipY, 14);
+      glowGrad.addColorStop(0, 'rgba(251, 191, 36, 1)');
+      glowGrad.addColorStop(0.3, 'rgba(245, 158, 11, 0.6)');
+      glowGrad.addColorStop(1, 'rgba(245, 158, 11, 0)');
+
+      ctx.beginPath();
+      ctx.arc(tipX, tipY, 14, 0, Math.PI * 2);
+      ctx.fillStyle = glowGrad;
+      ctx.fill();
+
+      // Distinct, solid amber pointer dot (as specified in Mouni Sadhu's text)
+      ctx.beginPath();
+      ctx.arc(tipX, tipY, 4.5, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(tipX, tipY, 3.2, 0, Math.PI * 2);
+      ctx.fillStyle = '#f59e0b';
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    /* =====================================================================
+       Main Animation & Game Loop
+       ===================================================================== */
+    let lastFrameTime = performance.now();
+    let milestoneMet = { 60: false, 120: false, 300: false, 600: false };
+
+    function appLoop(currentTime) {
+      const dt = currentTime - lastFrameTime;
+      lastFrameTime = currentTime;
+
+      if (STATE.isRunning && !STATE.isPrepCountdown) {
+        STATE.currentStreakMs += dt;
+        STATE.totalSessionMs += dt;
+
+        // Check Milestone Alerts
+        const currentSec = Math.floor(STATE.currentStreakMs / 1000);
+        if (currentSec >= STATE.targetSeconds && !milestoneMet[STATE.targetSeconds]) {
+          milestoneMet[STATE.targetSeconds] = true;
+          audioSynth.playGongMilestone();
+          showToast(`Target Milestone of ${STATE.targetSeconds / 60}m Achieved! Persevere!`);
+        }
+
+        // Update Best of Session
+        if (STATE.currentStreakMs > STATE.bestStreakSessionMs) {
+          STATE.bestStreakSessionMs = STATE.currentStreakMs;
+          bestStreakDisplay.textContent = formatTime(STATE.bestStreakSessionMs);
+        }
+
+        // Live display updates
+        streakTimerDisplay.textContent = formatTime(STATE.currentStreakMs);
+        totalSessionDisplay.textContent = formatTime(STATE.totalSessionMs, false);
+      }
+
+      renderClock();
+      requestAnimationFrame(appLoop);
+    }
+
+    /* =====================================================================
+       Practice Control Logic
+       ===================================================================== */
+    let prepInterval = null;
+
+    function startPrepCountdown() {
+      STATE.isPrepCountdown = true;
+      STATE.prepRemaining = 10;
+      prepCountdown.textContent = STATE.prepRemaining;
+
+      prepOverlay.classList.remove('opacity-0', 'pointer-events-none');
+      idleNotice.classList.add('opacity-0');
+
+      prepInterval = setInterval(() => {
+        STATE.prepRemaining--;
+        if (STATE.prepRemaining > 0) {
+          prepCountdown.textContent = STATE.prepRemaining;
+          audioSynth.playTick();
+        } else {
+          clearInterval(prepInterval);
+          prepInterval = null;
+          STATE.isPrepCountdown = false;
+          prepOverlay.classList.add('opacity-0', 'pointer-events-none');
+          startActualPractice();
+        }
+      }, 1000);
+    }
+
+    function startActualPractice() {
+      STATE.isRunning = true;
+      STATE.streakStartTime = performance.now();
+      lastTickSecond = -1;
+
+      mainToggleBtn.classList.remove('from-amber-500', 'to-amber-600');
+      mainToggleBtn.classList.add('from-slate-700', 'to-slate-800');
+      mainToggleText.textContent = 'Pause Focus';
+      mainToggleIcon.setAttribute('data-lucide', 'pause');
+      lucide.createIcons();
+
+      thoughtIntrusionBtn.disabled = false;
+      idleNotice.classList.add('opacity-0');
+    }
+
+    function startFocusSession() {
+      audioSynth.init();
+      if (STATE.useCenteringCount) {
+        startPrepCountdown();
+      } else {
+        startActualPractice();
+      }
+    }
+
+    function pauseFocusSession() {
+      STATE.isRunning = false;
+      if (prepInterval) {
+        clearInterval(prepInterval);
+        prepInterval = null;
+        STATE.isPrepCountdown = false;
+        prepOverlay.classList.add('opacity-0', 'pointer-events-none');
+      }
+
+      mainToggleBtn.classList.add('from-amber-500', 'to-amber-600');
+      mainToggleBtn.classList.remove('from-slate-700', 'to-slate-800');
+      mainToggleText.textContent = 'Resume Focus';
+      mainToggleIcon.setAttribute('data-lucide', 'play');
+      lucide.createIcons();
+
+      thoughtIntrusionBtn.disabled = true;
+      idleNotice.classList.remove('opacity-0');
+    }
+
+    function recordThoughtIntrusion(reason = 'General Distraction') {
+      if (!STATE.isRunning) return;
+
+      audioSynth.playIntrusionSound();
+
+      // Log attempt
+      const attemptDuration = STATE.currentStreakMs;
+      const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      STATE.attempts.unshift({
+        id: Date.now(),
+        durationMs: attemptDuration,
+        timeString: formatTime(attemptDuration),
+        reason: reason,
+        timestamp: timestamp
+      });
+
+      // Update Lifetime Record
+      if (attemptDuration > STATE.allTimeRecordMs) {
+        STATE.allTimeRecordMs = attemptDuration;
+        try {
+          localStorage.setItem('mouni_sadhu_watch_records', JSON.stringify({
+            allTimeRecordMs: STATE.allTimeRecordMs,
+            minimalDialMode: STATE.minimalDialMode,
+            continuousSweep: STATE.continuousSweep
+          }));
+        } catch (e) {}
+      }
+
+      // Reset milestones for new streak
+      milestoneMet = { 60: false, 120: false, 300: false, 600: false };
+
+      // Open Thought Intrusion categorization dialog
+      modalStreakTime.textContent = formatTime(attemptDuration);
+      thoughtModal.classList.remove('opacity-0', 'pointer-events-none');
+
+      // Reset streak
+      STATE.currentStreakMs = 0;
+      streakTimerDisplay.textContent = '00:00.0';
+      STATE.isRunning = false;
+      thoughtIntrusionBtn.disabled = true;
+
+      mainToggleBtn.classList.add('from-amber-500', 'to-amber-600');
+      mainToggleBtn.classList.remove('from-slate-700', 'to-slate-800');
+      mainToggleText.textContent = 'Restart Streak';
+      mainToggleIcon.setAttribute('data-lucide', 'play');
+      lucide.createIcons();
+      idleNotice.classList.remove('opacity-0');
+
+      updateAnalyticsView();
+    }
+
+    /* =====================================================================
+       Analytics & Modal Updates
+       ===================================================================== */
+    function updateAnalyticsView() {
+      // Summary values
+      allTimeBestDisplay.textContent = formatTime(STATE.allTimeRecordMs);
+      totalAttemptsDisplay.textContent = STATE.attempts.length;
+
+      if (STATE.attempts.length > 0) {
+        const sum = STATE.attempts.reduce((acc, curr) => acc + curr.durationMs, 0);
+        const avg = sum / STATE.attempts.length;
+        avgStreakDisplay.textContent = formatTime(avg);
+      } else {
+        avgStreakDisplay.textContent = '00:00.0';
+      }
+
+      logCountLabel.textContent = `${STATE.attempts.length} attempts`;
+
+      if (STATE.attempts.length === 0) {
+        attemptsLogContainer.innerHTML = `
+          <div class="text-center py-8 text-xs text-slate-500 font-mono">
+            No attempts recorded yet. Begin your practice session to build your concentration record.
+          </div>
+        `;
+        return;
+      }
+
+      attemptsLogContainer.innerHTML = STATE.attempts.map((att, idx) => {
+        const isMastery = att.durationMs >= 600000;
+        const isBestInSession = att.durationMs === STATE.bestStreakSessionMs && att.durationMs > 0;
+        return `
+          <div class="flex items-center justify-between p-3 rounded-xl bg-slate-950/80 border ${isBestInSession ? 'border-amber-500/40 bg-amber-500/5' : 'border-slate-800/80'} text-xs">
+            <div class="flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-lg bg-slate-900 border border-slate-700 text-slate-400 flex items-center justify-center font-mono text-[10px]">
+                #${STATE.attempts.length - idx}
+              </span>
+              <div>
+                <div class="font-mono font-bold ${isMastery ? 'text-emerald-400' : 'text-slate-200'}">
+                  ${att.timeString}
+                  ${isMastery ? '<span class="ml-1 text-[10px] text-emerald-400 font-normal">★ MASTERY</span>' : ''}
+                  ${isBestInSession ? '<span class="ml-1 text-[10px] text-amber-400 font-normal">[Session Best]</span>' : ''}
+                </div>
+                <div class="text-[11px] text-slate-400 flex items-center gap-1.5 mt-0.5">
+                  <span class="px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 font-sans">${att.reason}</span>
+                  <span>•</span>
+                  <span>${att.timestamp}</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="font-mono text-[11px] text-slate-500">
+                ${Math.floor(att.durationMs / 1000)}s
+              </span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function updateZenModeUI() {
+      if (STATE.minimalDialMode) {
+        zenDialBtn.classList.add('bg-amber-500/20', 'border-amber-500/40', 'text-amber-300');
+      } else {
+        zenDialBtn.classList.remove('bg-amber-500/20', 'border-amber-500/40', 'text-amber-300');
+      }
+    }
+
+    /* =====================================================================
+       Event Listeners & User Interactions
+       ===================================================================== */
+    // Main Toggle (Start / Pause)
+    mainToggleBtn.addEventListener('click', () => {
+      if (STATE.isRunning || STATE.isPrepCountdown) {
+        pauseFocusSession();
+      } else {
+        startFocusSession();
+      }
+    });
+
+    // Thought Intrusion Button
+    thoughtIntrusionBtn.addEventListener('click', () => {
+      recordThoughtIntrusion('Manual Reset');
+    });
+
+    // Clock Canvas Click (Acts as quick intrusion trigger or start)
+    canvas.addEventListener('click', () => {
+      if (STATE.isRunning) {
+        recordThoughtIntrusion('Touch Tap Reset');
+      } else if (!STATE.isPrepCountdown) {
+        startFocusSession();
+      }
+    });
+
+    // Spacebar keyboard shortcut for instantaneous intrusion logging
+    window.addEventListener('keydown', (e) => {
+      // Avoid triggering when user is in input/modal
+      if (e.code === 'Space' && e.target === document.body) {
+        e.preventDefault();
+        if (STATE.isRunning) {
+          recordThoughtIntrusion('Spacebar Reset');
+        } else if (!STATE.isPrepCountdown && thoughtModal.classList.contains('pointer-events-none')) {
+          startFocusSession();
+        }
+      }
+    });
+
+    // Reason Categorization Buttons
+    document.querySelectorAll('.reason-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const reason = btn.getAttribute('data-reason');
+        if (STATE.attempts.length > 0) {
+          STATE.attempts[0].reason = reason;
+          updateAnalyticsView();
+        }
+        thoughtModal.classList.add('opacity-0', 'pointer-events-none');
+        startFocusSession();
+      });
+    });
+
+    closeThoughtModal.addEventListener('click', () => {
+      thoughtModal.classList.add('opacity-0', 'pointer-events-none');
+    });
+
+    resumeImmediateBtn.addEventListener('click', () => {
+      thoughtModal.classList.add('opacity-0', 'pointer-events-none');
+      startFocusSession();
+    });
+
+    // Target Milestones
+    targetBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        targetBtns.forEach(b => {
+          b.classList.remove('bg-amber-500/20', 'text-amber-300', 'font-semibold', 'border', 'border-amber-500/40');
+          b.classList.add('text-slate-400');
+        });
+        btn.classList.add('bg-amber-500/20', 'text-amber-300', 'font-semibold', 'border', 'border-amber-500/40');
+        btn.classList.remove('text-slate-400');
+        STATE.targetSeconds = parseInt(btn.getAttribute('data-target'), 10);
+      });
+    });
+
+    // Sound Toggle
+    soundToggleBtn.addEventListener('click', () => {
+      STATE.soundEnabled = !STATE.soundEnabled;
+      if (STATE.soundEnabled) {
+        soundIcon.setAttribute('data-lucide', 'volume-2');
+        soundToggleBtn.classList.remove('text-slate-500');
+        soundToggleBtn.classList.add('text-slate-300');
+      } else {
+        soundIcon.setAttribute('data-lucide', 'volume-x');
+        soundToggleBtn.classList.add('text-slate-500');
+        soundToggleBtn.classList.remove('text-slate-300');
+      }
+      lucide.createIcons();
+    });
+
+    // Minimal Dial (Zen Mode) Toggle
+    zenDialBtn.addEventListener('click', () => {
+      STATE.minimalDialMode = !STATE.minimalDialMode;
+      updateZenModeUI();
+      try {
+        localStorage.setItem('mouni_sadhu_watch_records', JSON.stringify({
+          allTimeRecordMs: STATE.allTimeRecordMs,
+          minimalDialMode: STATE.minimalDialMode,
+          continuousSweep: STATE.continuousSweep
+        }));
+      } catch (e) {}
+    });
+
+    // Hand Movement Sweep Checkbox
+    sweepModeToggle.addEventListener('change', (e) => {
+      STATE.continuousSweep = e.target.checked;
+      try {
+        localStorage.setItem('mouni_sadhu_watch_records', JSON.stringify({
+          allTimeRecordMs: STATE.allTimeRecordMs,
+          minimalDialMode: STATE.minimalDialMode,
+          continuousSweep: STATE.continuousSweep
+        }));
+      } catch (e) {}
+    });
+
+    prepCountdownToggle.addEventListener('change', (e) => {
+      STATE.useCenteringCount = e.target.checked;
+    });
+
+    // Analytics Modal
+    openStatsBtn.addEventListener('click', () => {
+      updateAnalyticsView();
+      statsModal.classList.remove('opacity-0', 'pointer-events-none');
+    });
+
+    closeStatsModal.addEventListener('click', () => {
+      statsModal.classList.add('opacity-0', 'pointer-events-none');
+    });
+
+    closeStatsModalBtn.addEventListener('click', () => {
+      statsModal.classList.add('opacity-0', 'pointer-events-none');
+    });
+
+    // Clear Data
+    clearDataBtn.addEventListener('click', () => {
+      STATE.attempts = [];
+      STATE.allTimeRecordMs = 0;
+      STATE.bestStreakSessionMs = 0;
+      bestStreakDisplay.textContent = '00:00.0';
+      try {
+        localStorage.removeItem('mouni_sadhu_watch_records');
+      } catch (e) {}
+      updateAnalyticsView();
+      showToast('Practice history cleared.');
+    });
+
+    // Guide Drawer
+    openGuideBtn.addEventListener('click', () => {
+      guideDrawer.classList.remove('opacity-0', 'pointer-events-none');
+      guideDrawerContent.classList.remove('translate-x-full');
+    });
+
+    function closeGuide() {
+      guideDrawer.classList.add('opacity-0', 'pointer-events-none');
+      guideDrawerContent.classList.add('translate-x-full');
+    }
+
+    closeGuideBtn.addEventListener('click', closeGuide);
+    guideDrawer.addEventListener('click', (e) => {
+      if (e.target === guideDrawer) closeGuide();
+    });
+
+    statsModal.addEventListener('click', (e) => {
+      if (e.target === statsModal) {
+        statsModal.classList.add('opacity-0', 'pointer-events-none');
+      }
+    });
+
+    thoughtModal.addEventListener('click', (e) => {
+      if (e.target === thoughtModal) {
+        thoughtModal.classList.add('opacity-0', 'pointer-events-none');
+      }
+    });
+
+    /* =====================================================================
+       Application Initializer
+       ===================================================================== */
+    window.onload = function () {
+      updateAnalyticsView();
+      requestAnimationFrame(appLoop);
+    };
+  </script>
+</body>
+</html>
